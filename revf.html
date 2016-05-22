@@ -16,6 +16,21 @@
 	</head>	
 					
 	<body>
+				<?php // index.php
+		require_once 'openid.php';
+		$openid = new LightOpenID("utinerary.webs.com");
+
+		$openid->identity = 'https://www.google.com/accounts/o8/id';
+		$openid->required = array(
+  		'namePerson/first',
+  		'namePerson/last',
+  		'contact/email',
+		);
+		$openid->returnUrl = 'http://utinerary.webs.com/login.php'
+		?>
+
+		<a href="<?php echo $openid->authUrl() ?>"><img src="http://qpleple.com/img/post-how-to-make-people-login-into-your-website-with-their-google-account/signin-google-3.png" /></a>
+
 		<div class="jumbotron">
 			<h1>Plan your travel. Smarter.</h1>
 		</div>
